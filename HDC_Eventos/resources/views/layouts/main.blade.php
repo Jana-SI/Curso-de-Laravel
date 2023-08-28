@@ -24,9 +24,9 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
             <div class="collapse navbar-collapse" id="navbar">
-                <a href="/" class="nnavbar-brand">
+                <a href="/" class="navbar-brand">
                     <img src="/img/hdcevents_logo.svg" alt="HDC Eventos">
                 </a>
 
