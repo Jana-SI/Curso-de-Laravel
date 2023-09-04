@@ -32,6 +32,16 @@ header{
     border: 2px solid #c28008;
 }
 
+.msg{
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
 /* navbar */
 #navbar img{
     width: 40px;
@@ -87,7 +97,7 @@ header{
     margin-bottom: 30px;
 }
 
-#cards-container{
+/* #cards-container{
     display: flex;
 }
 
@@ -97,6 +107,27 @@ header{
     border-radius: 10px;
     padding: 0;
     margin: 5px;
+} */
+
+#cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Adicione flex-wrap para permitir a quebra de linha */
+}
+
+#cards-container .card {
+    flex: 1 1 calc(25% - 10px); /* Ajuste o tamanho dos cards */
+    max-width: calc(25% - 10px); /* Ajuste a largura máxima dos cards */
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px;
+}
+
+/* Adicione uma regra de mídia para telas menores */
+@media (max-width: 768px) {
+    #cards-container .card {
+        flex: 1 1 calc(50% - 10px); /* Reduza o tamanho dos cards para 50% em telas menores */
+        max-width: calc(50% - 10px); /* Reduza a largura máxima dos cards para 50% em telas menores */
+    }
 }
 
 #eventos-container img{
