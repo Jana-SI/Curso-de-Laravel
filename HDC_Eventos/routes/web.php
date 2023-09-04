@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
 
 Route::get('/', [EventoController::class, 'index']);
+
 Route::get('/events/criar', [EventoController::class, 'criar']);
+Route::post('/events', [EventoController::class, 'store']);

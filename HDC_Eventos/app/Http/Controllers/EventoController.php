@@ -19,4 +19,17 @@ class EventoController extends Controller
     public function criar(){
         return view('events.criar');
     }
+
+    public function store(Request $request){
+        $evento = new Evento;
+
+        $evento->titulo = $request->titulo;
+        $evento->cidade = $request->cidade;
+        $evento->privado = $request->privado;
+        $evento->descricao = $request->descricao;
+
+        $evento->save();
+
+        return redirect('/');
+    }
 }
