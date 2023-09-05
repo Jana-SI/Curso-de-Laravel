@@ -25,7 +25,7 @@
 
                         <p class="card-participantes">x participantes</p>
 
-                        <a href="" class="btn btn-primary">Saber mais</a>
+                        <a href="/events/{{ $evento->id }}" class="btn btn-primary">Saber mais</a>
                     </div>
                 </div>
             @endforeach
