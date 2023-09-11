@@ -12,4 +12,6 @@ class Evento extends Model
     protected $casts = [
         'itens' => 'array'
     ];
+
+    protected $datas = ['data'];
 }

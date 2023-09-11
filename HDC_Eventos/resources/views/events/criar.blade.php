@@ -17,6 +17,10 @@
                 <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Nome do evento">
             </div>
             <div class="form-group">
+                <label for="data">Data do vento:</label>
+                <input type="date" name="data" id="data" class="form-control">
+            </div>
+            <div class="form-group">
                 <label for="titulo">Cidade:</label>
                 <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Local do evento">
             </div>
