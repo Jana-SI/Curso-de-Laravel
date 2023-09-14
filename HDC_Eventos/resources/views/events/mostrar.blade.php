@@ -21,7 +21,7 @@
                 </p>
                 <p class="evento-dono">
                     <ion-icon name="star-outline"></ion-icon>
-                    Dono do Evento
+                    {{ $donoEvento['name'] }}
                 </p>
                 <a href="" class="btn btn-primary" id="evento-submit">Confirmar Presença</a>
 
