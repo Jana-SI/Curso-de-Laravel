@@ -14,4 +14,8 @@ class Evento extends Model
     ];
 
     protected $datas = ['data'];
+
+    public function usuario(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

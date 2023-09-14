@@ -17,10 +17,12 @@ use App\Http\Controllers\EventoController;
 
 Route::get('/', [EventoController::class, 'index']);
 
-Route::get('/events/criar', [EventoController::class, 'criar']);
+Route::get('/events/criar', [EventoController::class, 'criar'])->middleware('auth');
+
 Route::post('/events', [EventoController::class, 'store']);
 
 Route::get('/events/{id}', [EventoController::class, 'mostrar']);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
