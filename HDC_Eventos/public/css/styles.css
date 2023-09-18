@@ -229,6 +229,15 @@ input[type="checkbox"], input[type="radio"] {
     margin-top: 30px;
 }
 
+.dashboard-titulo-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.dashboard-eventos-container th{
+    width: 25%;
+}
+
 /* footer */
 footer{
     text-align: center;
