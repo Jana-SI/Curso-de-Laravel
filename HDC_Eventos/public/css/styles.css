@@ -238,6 +238,22 @@ input[type="checkbox"], input[type="radio"] {
     width: 25%;
 }
 
+.dashboard-eventos-container form{
+    display: inline-block;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+/* Opcional: Se você quiser que os botões se empilhem em telas menores, você pode adicionar uma quebra de linha com flex-wrap */
+/* @media (max-width: 768px) {
+    .btn-group {
+        flex-wrap: wrap;
+    }
+} */
+
 /* footer */
 footer{
     text-align: center;
