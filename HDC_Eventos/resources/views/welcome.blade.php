@@ -27,7 +27,7 @@
 
                         <h5 class="card-title">{{ $evento->titulo }}</h5>
 
-                        <p class="card-participantes">x participantes</p>
+                        <p class="card-participantes">{{ count($evento->usuarios) }} participantes</p>
 
                         <a href="/events/{{ $evento->id }}" class="btn btn-primary">Saber mais</a>
                     </div>

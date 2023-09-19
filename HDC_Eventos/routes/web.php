@@ -28,3 +28,5 @@ Route::get('/events/editar/{id}', [EventoController::class, 'editar'])->middlewa
 Route::put('/events/atualizar/{id}', [EventoController::class, 'atualizar'])->middleware('auth');
 
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->middleware('auth');
+
+Route::post('events/participar/{id}', [EventoController::class, 'participarEvento'])->middleware('auth');

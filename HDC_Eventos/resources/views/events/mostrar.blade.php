@@ -17,13 +17,16 @@
                 </p>
                 <p class="evento-participantes">
                     <ion-icon name="people-outline"></ion-icon>
-                    X Participantes
+                    {{ count($evento->usuarios) }} Participantes
                 </p>
                 <p class="evento-dono">
                     <ion-icon name="star-outline"></ion-icon>
                     {{ $donoEvento['name'] }}
                 </p>
-                <a href="" class="btn btn-primary" id="evento-submit">Confirmar Presença</a>
+                <form action="/events/participar/{{ $evento->id }}" method="post">
+                    @csrf
+                    <a href="/events/participar/{{ $evento->id }}" class="btn btn-primary" id="evento-submit" onclick="event.preventDefault(); this.closest('form').submit();">Confirmar Presença</a>
+                </form>
 
                 <h3>O evento conta com:</h3>
                 <ul id="itens-list">

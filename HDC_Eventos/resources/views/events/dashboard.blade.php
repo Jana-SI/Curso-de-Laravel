@@ -24,7 +24,7 @@
                     <tr>
                         <td scope='row'>{{ $loop->index + 1 }}</td>
                         <td><a href="/events/{{ $evento->id }}">{{ $evento->titulo }}</a></td>
-                        <td>0</td>
+                        <td>{{ count($evento->usuarios) }}</td>
                         <td class="btn-group">
                             <a href="/events/editar/{{ $evento->id }}" class="btn btn-info edit-'btn">
                                 <ion-icon name='create-outline'></ion-icon> Editar
