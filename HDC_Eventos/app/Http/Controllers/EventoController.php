@@ -79,8 +79,55 @@ class EventoController extends Controller
     }
     
     public function deletar($id){
-        Evento::findorFail($id)->delete();
-
+        // Encontre o evento a ser excluído e obtenha o nome da imagem
+        $evento = Evento::findOrFail($id);
+        $imagemNome = $evento->imagem;
+    
+        // Exclua o evento do banco de dados
+        $evento->delete();
+    
+        // Exclua a imagem do sistema de arquivos
+        if (!empty($imagemNome) && file_exists(public_path('img/events/' . $imagemNome))) {
+            unlink(public_path('img/events/' . $imagemNome));
+        }
+    
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso');
+    }    
+
+    public function editar($id){
+        $evento = Evento::findorFail($id);
+
+        return view('events.editar', ['evento' => $evento]);
     }
+
+    public function atualizar(Request $request, $id){
+        $evento = Evento::findOrFail($id);
+        $data = $request->all();
+    
+        // Verifique se uma nova imagem foi enviada
+        if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+            // Obtenha o nome da imagem antiga
+            $imagemAntiga = $evento->imagem;
+    
+            // Faça o upload da nova imagem
+            $requestImagem = $request->imagem;
+            $extension = $requestImagem->extension();
+            $imagemNome = md5($requestImagem->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $request->imagem->move(public_path('img/events'), $imagemNome);
+    
+            // Atualize o nome da imagem no array de dados
+            $data['imagem'] = $imagemNome;
+    
+            // Exclua a imagem antiga, se existir
+            if (!empty($imagemAntiga) && file_exists(public_path('img/events/' . $imagemAntiga))) {
+                unlink(public_path('img/events/' . $imagemAntiga));
+            }
+        }
+    
+        // Atualize os outros dados do evento
+        $evento->update($data);
+    
+        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
+    }
+    
 }

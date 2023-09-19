@@ -23,6 +23,8 @@ Route::post('/events', [EventoController::class, 'store']);
 
 Route::get('/events/{id}', [EventoController::class, 'mostrar']);
 
-Route::delete('/events/{id}', [EventoController::class, 'deletar']);
+Route::delete('/events/{id}', [EventoController::class, 'deletar'])->middleware('auth');
+Route::get('/events/editar/{id}', [EventoController::class, 'editar'])->middleware('auth');
+Route::put('/events/atualizar/{id}', [EventoController::class, 'atualizar'])->middleware('auth');
 
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->middleware('auth');

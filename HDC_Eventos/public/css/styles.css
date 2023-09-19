@@ -248,12 +248,17 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /* Opcional: Se você quiser que os botões se empilhem em telas menores, você pode adicionar uma quebra de linha com flex-wrap */
-/* @media (max-width: 768px) {
+ @media (max-width: 768px) {
     .btn-group {
         flex-wrap: wrap;
     }
-} */
+}
 
+/* pagina editar */
+.img-preview{
+    width: 100px;
+    margin-top: 20px;
+}
 /* footer */
 footer{
     text-align: center;

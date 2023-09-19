@@ -26,10 +26,10 @@
                         <td><a href="/events/{{ $evento->id }}">{{ $evento->titulo }}</a></td>
                         <td>0</td>
                         <td class="btn-group">
-                            <a href="#" class="btn btn-info edit-'btn">
+                            <a href="/events/editar/{{ $evento->id }}" class="btn btn-info edit-'btn">
                                 <ion-icon name='create-outline'></ion-icon> Editar
                             </a>
-                            <form action="/events/{{$evento->id}}" method="POST">
+                            <form action="/events/{{ $evento->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger delete-btn">
