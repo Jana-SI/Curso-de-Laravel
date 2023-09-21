@@ -50,6 +50,15 @@ header{
     padding: 10px;
     width: 275px;
 }
+
+#info-container .evento-passado-msg{
+    margin: 15px 0;
+    color: #850000;
+    background-color: #ffcccc;
+    border: 1px solid #b8daff;
+    padding: 10px;
+    width: 275px;
+}
 /* navbar */
 #navbar img{
     width: 40px;
@@ -248,18 +257,6 @@ input[type="checkbox"], input[type="radio"] {
 
 .dashboard-eventos-container form{
     display: inline-block;
-}
-
-.btn-group {
-    display: flex;
-    gap: 10px; /* Espaço entre os botões */
-}
-
-/* Opcional: Se você quiser que os botões se empilhem em telas menores, você pode adicionar uma quebra de linha com flex-wrap */
- @media (max-width: 768px) {
-    .btn-group {
-        flex-wrap: wrap;
-    }
 }
 
 /* pagina editar */

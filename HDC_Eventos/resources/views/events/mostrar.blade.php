@@ -24,13 +24,19 @@
                     {{ $donoEvento['name'] }}
                 </p>
                 @if (!$confirmouPresenca)
-                    <form action="/events/participar/{{ $evento->id }}" method="post">
-                        @csrf
-                        <a href="/events/participar/{{ $evento->id }}" class="btn btn-primary" id="evento-submit" onclick="event.preventDefault(); this.closest('form').submit();">Confirmar Presença</a>
-                    </form>
+                    @if ($evento->data > now())
+                        <form action="/events/participar/{{ $evento->id }}" method="post">
+                            @csrf
+                            <a href="/events/participar/{{ $evento->id }}" class="btn btn-primary" id="evento-submit"
+                                onclick="event.preventDefault(); this.closest('form').submit();">Confirmar Presença</a>
+                        </form>
+                    @else
+                        <p class="evento-passado-msg">Este evento já ocorreu e não é mais possível confirmar presença.</p>
+                    @endif
                 @else
                     <p class="confirmou-presenca-msg">Você já está participando deste evento</p>
                 @endif
+
 
                 <h3>O evento conta com:</h3>
                 <ul id="itens-list">

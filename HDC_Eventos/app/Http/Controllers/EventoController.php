@@ -7,18 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\User;
 
+use Carbon\Carbon; // Certifique-se de importar a classe Carbon
+
 class EventoController extends Controller
 {
     public function index(){
 
         $pesquisa = request('pesquisa');
+        $dataAtual = Carbon::now();
 
         if ($pesquisa) {
             $eventos = Evento::where([
                 ['titulo','like','%'.$pesquisa.'%']
             ])->get();
         } else {
-            $eventos = Evento::all();
+            $eventos = Evento::where('data', '>', $dataAtual)->get(); // Somente eventos futuros
         }
     
         return view('welcome',['eventos' => $eventos, 'pesquisa' => $pesquisa]);
@@ -30,6 +33,29 @@ class EventoController extends Controller
     }
 
     public function store(Request $request){
+
+        // Validação dos campos do formulário com mensagens personalizadas
+    $request->validate([
+        'titulo' => 'required',
+        'data' => 'required|date',
+        'cidade' => 'required',
+        'privado' => 'required',
+        'descricao' => 'required',
+        'imagem' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'itens' => 'required|array', // Requer pelo menos um checkbox marcado
+    ], [
+        'titulo.required' => 'O campo título é obrigatório.',
+        'data.required' => 'O campo data é obrigatório.',
+        'data.date' => 'O campo data deve ser uma data válida.',
+        'cidade.required' => 'O campo cidade é obrigatório.',
+        'privado.required' => 'O campo privado é obrigatório.',
+        'descricao.required' => 'O campo descrição é obrigatório.',
+        'imagem.image' => 'O arquivo de imagem deve ser uma imagem válida.',
+        'imagem.mimes' => 'O arquivo de imagem deve ser um dos formatos: jpeg, png, jpg, gif.',
+        'imagem.max' => 'O tamanho máximo do arquivo de imagem é 2 MB.',
+        'itens.required' => 'Pelo menos um item de infraestrutura deve ser selecionado.', // Mensagem para os checkboxes
+    ]);
+
         $evento = new Evento;
 
         $evento->titulo = $request->titulo;
