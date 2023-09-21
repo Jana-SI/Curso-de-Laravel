@@ -46,4 +46,38 @@
     @endif
 </div>
 
+<div class="col-md-10 offset-md-1 dashboard-titulo-container">
+    <h1>Eventos que estou participando</h1> 
+ </div>
+
+ <div class="col-md-10 offset-md-1 dashboard-eventos-container">
+    @if (count($eventosParticipante) > 0)
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Participantes</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($eventosParticipante as $evento)
+                <tr>
+                    <td scope='row'>{{ $loop->index + 1 }}</td>
+                    <td>
+                        <a href="/events/{{ $evento->id }}">{{ $evento->titulo }}</a>
+                    </td>
+                    <td>{{ count($evento->usuarios) }}</td>
+                    <td>
+                        <a href="#">Sair do evento</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @else
+        <p>Você ainda não está participando de nenhum evento, <a href="/">veja todos os eventos</a></p>
+    @endif
+ </div>
 @endsection
