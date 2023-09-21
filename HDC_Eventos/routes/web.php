@@ -30,3 +30,5 @@ Route::put('/events/atualizar/{id}', [EventoController::class, 'atualizar'])->mi
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->middleware('auth');
 
 Route::post('events/participar/{id}', [EventoController::class, 'participarEvento'])->middleware('auth');
+
+Route::delete('events/sair/{id}', [EventoController::class, 'sairEvento'])->middleware('auth');

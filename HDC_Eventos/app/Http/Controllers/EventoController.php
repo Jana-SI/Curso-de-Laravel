@@ -65,9 +65,24 @@ class EventoController extends Controller
     
         $evento = Evento::findOrFail($id);
 
+        $usuario = auth()->user();
+
+        $confirmouPresenca = false;
+
+        if($usuario){
+
+            $usuarioEventos = $usuario->eventosParticipante->toArray();
+
+            foreach($usuarioEventos as $usuarioEvento) {
+                if($usuarioEvento['id'] == $id){
+                    $confirmouPresenca = true;
+                }
+            }
+        } 
+
         $donoEvento = User::where('id', $evento->usuario_id)->first()->toArray();
     
-        return view('events.mostrar', ['evento' => $evento, 'donoEvento' => $donoEvento]);
+        return view('events.mostrar', ['evento' => $evento, 'donoEvento' => $donoEvento, 'confirmouPresenca' => $confirmouPresenca]);
     }
 
     public function dashboard(){
@@ -147,5 +162,15 @@ class EventoController extends Controller
         $evento = Evento::findOrFail($id);
 
         return redirect('dashboard')->with('msg', 'Sua presença está confirmada no evento ' . $evento->titulo);
+    }
+
+    public function sairEvento($id){
+        $usuario = auth()->user();
+
+        $usuario->eventosParticipante()->detach($id);
+
+        $evento = Evento::findOrFail($id);
+
+        return redirect('dashboard')->with('msg', 'Você saiu com sucesso do evento: ' . $evento->titulo);
     }
 }

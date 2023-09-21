@@ -42,6 +42,14 @@ header{
     padding: 10px;
 }
 
+#info-container .confirmou-presenca-msg{
+    margin: 15px 0;
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
+    padding: 10px;
+    width: 275px;
+}
 /* navbar */
 #navbar img{
     width: 40px;
@@ -182,7 +190,7 @@ input[type="checkbox"], input[type="radio"] {
 #imagem-container,
 #info-container{
     margin-top: 30px;
-}
+}  
 
 #imagem-container img{
     border-radius: 10px;
